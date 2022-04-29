@@ -64,11 +64,11 @@ Validator.isEmail = function (selector) {
     }
 }
 
-// Modal-register
-const closeElement = document.querySelector('.modal-register__icoin')
+// Modal
+const closeElement = document.querySelector('.js-modal-close__icoin')
 const registerElement = document.querySelector('.js-header-nav__item-link')
-const modalElement = document.querySelector('.modal-register')
-const modalContainer = document.querySelector('.js-modal-register__container')
+const modalElement = document.querySelector('.js-modal')
+const modalContainer = document.querySelector('.js-modal__container')
 //Open-modal
 registerElement.addEventListener('click',openModal)
 function openModal(){
@@ -84,6 +84,6 @@ function hideModal(){
 modalElement.addEventListener('click', hideModal)
 
 modalContainer.addEventListener('click', function(event){
-    //hiện tượng nổi bọt
+    //dừng hiện tượng nổi bọt
     event.stopPropagation()
 })

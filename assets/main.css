@@ -18,6 +18,7 @@
     display: inline-block;
     margin: 0 8px;
     position: relative;
+    z-index: 1;
 }
 
 .header-nav__item:hover .header-subnav {
@@ -68,6 +69,20 @@
     display: none;
     box-shadow: 0px 1px 3px 2px rgb(158 158 158 / 20%);
     animation: subnav .3s ease;
+    transform-origin: top right;
+}
+
+@keyframes subnav {
+    from {
+        opacity: 0.3;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+
+    }
 }
 
 .header-subnav--language,
@@ -79,15 +94,6 @@
     width: 400px;
 }
 
-@keyframes subnav {
-    from {
-        opacity: 0.3;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 
 .header-subnav::before {
     content: "";
@@ -233,9 +239,10 @@ img.header-logo__img {
 }
 
 .header-searchbar {
+    position: relative;
     background-color: white;
     display: flex;
-    padding: 2px;
+    /* padding: 2px; */
     border-radius: 3px;
     box-shadow: 2px 2px 2px #33333361;
 }
@@ -248,12 +255,52 @@ img.header-logo__img {
     width: 100%;
     outline: none;
 }
+.header-searchbar__input:focus~.header-searchbar__history {
+    display: block;
+}
+
+.header-searchbar__history {
+    display: none;
+    position: absolute;
+    top: 111%;
+    background-color: white;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0px 3px 2px 1px rgba(51, 62, 73, 0.1);
+}
+
+.header-searchbar__history-title {
+    font-size: 1.4rem;
+    font-weight: lighter;
+    color: var(--text-color);
+    margin-left: 8px;
+}
+
+.header-searchbar__history-list {
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+
+    
+}
+
+.header-searchbar__history-link {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    display: block;
+    padding: 10px 8px ;
+}
+
+.header-searchbar__history-link:hover {
+    background-color: rgba(248, 248, 248, 0.5);;
+}
 
 .header-searchbar__btn {
     padding: 0px 25px;
     background-color: #fb5533;
     border-radius: 3px;
-    margin-left: 5px;
+    margin: 2px;
 }
 
 .header-searchbar__btn:hover {
@@ -296,7 +343,7 @@ img.header-logo__img {
 .header-detail {
     list-style-type: none;
     margin: 7px 0;
-    padding-left: 0px;
+    padding-left: 1px;
 }
 
 .header-detail__item {
@@ -320,6 +367,22 @@ img.header-logo__img {
     background-color: rgba(0, 0, 0, 0.7);
     align-items: center;
     justify-content: center;
+}
+
+.modal__container {
+    position: absolute;
+    animation: fedIn linear 0.4s;
+}
+
+@keyframes fedIn {
+    from{
+        top: -100%;
+        opacity: 0;
+    }
+    to{
+        top: 0%;
+        opacity: 1;
+    }
 }
 
 .modal-register.open-modal{
